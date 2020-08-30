@@ -11,13 +11,13 @@ describe('githubService', () => {
         // import and pass your custom axios instance to this method
         moxios.install()
         sandbox.stub(Date, 'now').returns(new Date("2020-08-12T00:00:00Z"));
-    })
+    });
 
     afterEach(function () {
         // import and pass your custom axios instance to this method
         moxios.uninstall()
         sandbox.restore();
-    })
+    });
 
     describe('#getOpenIssues()', () => {
         it('should return open issues count when status is 200', async () => {

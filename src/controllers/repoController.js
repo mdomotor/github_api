@@ -1,5 +1,5 @@
 const github = require('../services/githubService');
-const search = require('../models/search.js');
+const search = require('../repository/searchRepository.js');
 
 exports.getRepo = async (req, res, next) => {
     try {
@@ -20,5 +20,5 @@ exports.getRepo = async (req, res, next) => {
     }
     
     //save search: project and user
-    //search.insertSearch(req.params.owner, req.params.repo, req.query.user);
+    const rows = await search.insertSearch(req.params.owner, req.params.repo, req.query.user);
 };
