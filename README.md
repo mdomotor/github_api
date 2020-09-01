@@ -1,3 +1,7 @@
+## Arquitetura
+
+![](media/github_api.png)
+
 
 ## Configurações iniciais
 
