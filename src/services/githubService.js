@@ -45,16 +45,17 @@ async function getIssuesTimes(owner, repo, openIssues) {
 
     const promises = pages.map(page => axiosRequest(page));
 
+    let promisesResponse;
     try {
-        const response = (await Promise.all(promises)).flat();
-        const avg = getAverage(response);
-        const std = getStandardDeviation(response);
-        
-        return {avg, std};
+        promisesResponse = (await Promise.all(promises)).flat();
     } catch (error) {
         const err = new RequestError(error.response.data.message, error.response.status);
         throw err;
     }
+
+    const avg = getAverage(promisesResponse);
+    const std = getStandardDeviation(promisesResponse);
+    return {avg, std};
 }
 
 function getTimeDiff(firstTime, secondTime) {

@@ -4,12 +4,12 @@ const search = require('../repository/searchRepository.js');
 exports.getRepo = async (req, res, next) => {
     try {
         const openIssues = await github.getOpenIssues(req.params.owner, req.params.repo);
-        const openIssueTimes = await github.getIssuesTimes(req.params.owner, req.params.repo, openIssues);
+        const openIssueTimes = openIssues > 0 ? await github.getIssuesTimes(req.params.owner, req.params.repo, openIssues) : {};
         
         res.json({ 
             openIssues: openIssues,
-            openIssuesAvg: openIssueTimes.avg,
-            openIssueStd: openIssueTimes.std
+            openIssuesAvg: openIssueTimes.avg || null,
+            openIssueStd: openIssueTimes.std || null
         });
     } catch (error) {
         res.status(error.statusCode).send({ 
