@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const knex = require('../knex/knex.js');
 
 // Rotas
 const index = require('./routes/index');

@@ -19,7 +19,7 @@ describe('searchRepository', () => {
     describe('#insertSearch()', () => {
         it('should return the row inserted', async () => {
             const rows = await search.insertSearch('test', 'repository', 'joao');
-            const selectedRows = await knex.select().from('searches');
+            const selectedRows = await knex.select('owner', 'repo', 'user','created_at').from('searches');
             assert.deepEqual(rows, selectedRows);
         });
     });

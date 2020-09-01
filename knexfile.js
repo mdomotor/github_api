@@ -1,6 +1,13 @@
-// Update with your config settings.
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+};
 
 module.exports = {
+  test: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL_TEST,
+  },
+  
   development: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
@@ -12,9 +19,6 @@ module.exports = {
     pool: {
       min: 2,
       max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
     }
   }
 };
