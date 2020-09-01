@@ -16,7 +16,7 @@ Inicie o banco de dados, caso não tenha realizado anteriormente
 
 Realizar a migracão para o database criado
 
-    npx knex --env development migration:latest
+    npx knex --env development migrate:latest
 
 Execute o seguinte comando para iniciar
 
@@ -40,7 +40,7 @@ Criar o database de teste
 
 Realizar a migracão para o database criado
 
-    npx knex --env test migration:latest
+    npx knex --env test migrate:latest
 
 Executar os scripts de teste
 
