@@ -1,6 +1,6 @@
 const github = require('../services/githubService');
-const search = require('../repository/searchRepository.js');
-const statistics = require('../repository/statisticsRepository.js');
+const search = require('../repository/searchRepository');
+const statistics = require('../repository/statisticsRepository');
 
 async function getRepo (req, res, next) {
     try {

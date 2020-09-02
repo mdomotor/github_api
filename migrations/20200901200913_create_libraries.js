@@ -4,7 +4,6 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('owner').notNullable();
         table.string('repo').notNullable();
-        table.string('user').notNullable();
     });
     
 };

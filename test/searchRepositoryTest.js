@@ -13,7 +13,6 @@ describe('searchRepository', () => {
 
     afterEach(function () {
         sandbox.restore();
-        knex.destroy();
     });
 
     describe('#insertSearch()', () => {

@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.integer('lib_id');
         table.integer('open_issues_count').notNullable();
         table.date('created_at').notNullable();
-        table.foreign('lib_id').references('libraries.id')
+        table.foreign('lib_id').references('libraries.id');
     });
     
 };

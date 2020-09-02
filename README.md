@@ -78,7 +78,7 @@ Realizar a migracão para o database criado
 
 Executar os scripts de teste
 
-    npm test
+    npx mocha
 
 
 ## Como realizar o deploy
