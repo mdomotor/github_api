@@ -51,15 +51,27 @@ Execute o seguinte comando para iniciar
 
     npm run start:dev
 
-Para obter as informações das issues do repositório desejado, a aplicação espera receber a requisição
+Para obter as informações das issues do repositório desejado
 
-    Método: GET
-    URL: http://localhost:3000/repo/<owner>/<repo>?user=<user>
+    [GET] http://localhost:3000/repo/<owner>/<repo>?user=<user>
+
+Para obter o histórico das issues do repositório desejado (o usuário precisa ter escolhido receber o histórico do repositório)
+
+    [GET] http://localhost:3000/repo/<owner>/<repo>/history?user=<user>
+
+Para salvar um novo repositório para histórico das issues
+
+    [POST] http://localhost:3000/userLibraries/<owner>/<repo>/insert?user=<user>
+
+Para deletar o repositório escolhido para histórico das issues
+
+    [DELETE] http://localhost:3000/userLibraries/<owner>/<repo>/delete?user=<user>
 
 O seed contém dados para os seguintes parâmetros
 
     owner: 'facebook', repo: 'react', user: 'test_username'
     owner: 'angular', repo: 'angular', user: 'test_username'
+    owner: 'angular', repo: 'angular', user: 'test_user'
 
 
 ## Como executar os testes
