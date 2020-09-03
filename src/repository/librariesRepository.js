@@ -1,23 +1,13 @@
 const knex = require('../db');
 
-async function findLibraries(owner, repo, user) {
-  resp = await knex('libraries')
-                   .join('libraries', 'statistics.lib_id', 'libraries.id')
-                   .select('statistics.open_issues_count', 'statistics.created_at')
-                   .where({ owner, repo, user });
+async function selectLibraries(owner, repo) {
+  resp = await knex('libraries').select('id').where({ owner, repo });
   return resp;
 }
 
-async function insertLibrary(owner, repo, user) {
-  const created_at = new Date().toISOString().slice(0,10);
-  resp = await knex('libraries').insert({owner, repo, user}).returning(['owner', 'repo', 'user']);
+async function insertLibrary(owner, repo) {
+  resp = await knex('libraries').insert({owner, repo}).returning(['id', 'owner', 'repo']);
   return resp;
 }
 
-async function deleteLibrary(owner, repo, user) {
-  const created_at = new Date().toISOString().slice(0,10);
-  resp = await knex('libraries').insert({lib_id, open_issues_count, created_at}).returning(['lib_id', 'open_issues_count', 'created_at']);
-  return resp;
-}
-
-module.exports = { findLibraries, insertLibrary, deleteLibrary };
+module.exports = { selectLibraries, insertLibrary };

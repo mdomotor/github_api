@@ -7,16 +7,16 @@ async function findDistinctLibraries() {
   return resp;
 }
 
-async function insertUserLibrary(owner, repo, user) {
-  const created_at = new Date().toISOString().slice(0,10);
-  resp = await knex('user_libraries').insert({owner, repo, user}).returning(['owner', 'repo', 'user']);
+async function insertUserLibrary(lib_id, user) {
+  resp = await knex('user_libraries').insert({lib_id, user}).returning(['lib_id', 'user']);
   return resp;
 }
 
-async function deleteUserLibrary(lib_id, user) {
-  const created_at = new Date().toISOString().slice(0,10);
-  await knex('user_libraries').del().where({lib_id, user});
-  return 0;
+async function deleteUserLibrary(owner, repo, user) {
+  resp = await knex.del().from(knex.raw('user_libraries USING libraries'))
+                    .where(knex.raw('user_libraries.lib_id = libraries.id'))
+                    .andWhere({owner, repo, user});
+  return resp;
 }
 
 module.exports = { findDistinctLibraries, insertUserLibrary, deleteUserLibrary };
