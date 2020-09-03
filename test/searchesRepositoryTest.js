@@ -1,9 +1,9 @@
-const search = require('../src/repository/searchRepository.js');
+const search = require('../src/repository/searchesRepository.js');
 const knex = require('../src/db');
 const assert = require('assert');
 const sinon = require('sinon');
 
-describe('searchRepository', () => {
+describe('searchesRepository', () => {
     let sandbox = sinon.createSandbox();
     
     beforeEach(async function () {

@@ -1,5 +1,5 @@
 const github = require('../services/githubService');
-const search = require('../repository/searchRepository');
+const search = require('../repository/searchesRepository');
 const statistics = require('../repository/statisticsRepository');
 
 async function getIssues (req, res, next) {
